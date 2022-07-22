@@ -5,14 +5,15 @@ const morgan = require('morgan')
 const app = express()
 
 app.use(express.json())
-app.use(morgan('dev'))
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
-    app.use(cors());
-    next();
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With', 'content-type')
+  app.use(cors());
+  next();
 });
+app.use(morgan('dev'))
+
 
 const port = process.env.PORT || 3000;
 
