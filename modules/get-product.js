@@ -4,7 +4,7 @@ const client = datoCMS.buildClient( {apiToken: 'e16fc5dad5efc05d18c48a26a709ac' 
 async function getUploadID(file) {
   return client.uploads.createFromFileOrBlob({
     fileOrBlob: file,
-    filename: file.name,
+    filename: '',
     author: 'Matheus P.'
   })
 }
